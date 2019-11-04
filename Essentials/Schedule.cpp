@@ -4,7 +4,7 @@
 
 #include "Schedule.h"
 #include <cstring>
-std::list<Schedule> schedules;
+std::list<Schedule*> schedules;
 
 Schedule::Schedule(std::string name) {
     sid = getTimeStamp();
