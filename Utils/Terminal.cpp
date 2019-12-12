@@ -18,8 +18,6 @@ void tui() {
             cin >> ddl.tm_year >> ddl.tm_mon >> ddl.tm_mday >> ddl.tm_hour >> ddl.tm_min;
             ddl.tm_year -= 1900; --ddl.tm_mon; ddl.tm_sec = 0;
             sch->endTime = mktime(&ddl);
-            printf("Input expected time:"); cin >> sch->costTime;
-            printf("Input importance:"); cin >> sch->importance;
             sch->lastEdit = time(0);
             schedules.push_back(sch);
             DataBase::addSchedule(*sch);//放到文件中
@@ -38,9 +36,8 @@ void tui() {
         } else if (cmd == 3) {
             for (auto p : schedules) {
                 cout << p->name <<
-                    "\nImportance:" << p->importance <<
                     "\nEndTime:" << p->endTime <<
-                    "\ncostTime:" << p->costTime <<
+                    "\nLastEditTime:" << p->lastEdit <<
                     "\nsid:" << p->sid <<
                     "\nAlerted:" << p->alerted <<"\n\n";
             }
