@@ -64,7 +64,7 @@ nlohmann::json receive() {
                         que.pop();
                     }
                     str.push_back(0);
-                    auto json = nlohmann::json(str);
+                    auto json = nlohmann::json::parse(str);
 
                     return json;
                 }

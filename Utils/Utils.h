@@ -6,9 +6,11 @@
 #define MEMOCLIENT_UTILS_H
 
 
-#include <ctime>
-#include <chrono>
 
+#include "../JSONLib/json.hpp"
+#include "../Essentials/Schedule.h"
 std::time_t getTimeStamp();
+nlohmann::json schedule2json(const Schedule &sch);
+Schedule* json2Schedule(const nlohmann::json json);
 
 #endif //MEMOCLIENT_UTILS_H

@@ -14,5 +14,11 @@ struct  lost_connection : public std::exception {
     }
 };
 
+struct  file_not_found : public std::exception {
+    const char * what () const throw () {
+        return "file not found";
+    }
+};
+
 
 #endif //MEMOCLIENT_EXCEPTIONS_H

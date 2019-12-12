@@ -3,9 +3,27 @@
 //
 
 #include "Utils.h"
-std::time_t getTimeStamp() {
-    std::chrono::time_point<std::chrono::system_clock,std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
-    auto tmp=std::chrono::duration_cast<std::chrono::milliseconds>(tp.time_since_epoch());
-    std::time_t timestamp = tmp.count();
-    return timestamp;
+
+
+nlohmann::json schedule2json(const Schedule &sch) {
+    nlohmann::json json;
+    json["endtime"] = sch.endTime;
+    json["costtime"] = sch.costTime;
+    json["alerted"] = sch.alerted;
+    json["importance"] = sch.importance;
+    json["sid"] = sch.sid;
+    json["name"] = sch.name;
+    json["lastedit"] = sch.lastEdit;
+    return json;
+}
+
+Schedule* json2Schedule(const nlohmann::json json) {
+    Schedule* sch = new Schedule(json["name"].get<std::string>());
+    sch->sid = json["sid"].get<int>();
+    sch->importance = json["importance"].get<int>();
+    sch->alerted = json["alerted"].get<bool>();
+    sch->costTime = json["costtime"].get<time_t>();
+    sch->endTime = json["endtime"].get<time_t>();
+    sch->lastEdit = json["lastedit"].get<time_t>();
+    return sch;
 }
