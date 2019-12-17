@@ -1,7 +1,3 @@
-//
-// Created by a9214 on 2019/11/3.
-//
-
 #include "Utils.h"
 
 

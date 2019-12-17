@@ -146,7 +146,7 @@ void DataBase::sync() {
             delete remote_sch;//直接在原来的基础上赋值，这个就可以释放了。如果没找到相同sid的，就不能释放，因为要用
         } else {//没找到
             schedules.push_back(remote_sch);
-            DataBase::editSchedule(sid, *remote_sch);
+            DataBase::addSchedule(*remote_sch);
         }
     }
 }
@@ -175,5 +175,13 @@ void DataBase::sync_edit(unsigned sid, const Schedule &schedule) {
     req["pwd"] = passwd;
     req["schedule"] = schedule2json(schedule);
     req["sid"] = sid;
+    request(req);
+}
+
+void DataBase::sync_clear() {
+    nlohmann::json req;
+    req["name"] = "clearSchedule";
+    req["uid"] = uid;
+    req["pwd"] = passwd;
     request(req);
 }

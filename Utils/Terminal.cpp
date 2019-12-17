@@ -87,6 +87,7 @@ void tui() {
         } else if (cmd == -2) {
             DataBase::clearSchedule();
             schedules.clear();
+            if (loggedin) DataBase::sync_clear();
         } else if (cmd == -3) {
             DataBase::sync();
         }

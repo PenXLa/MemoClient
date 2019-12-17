@@ -2,8 +2,11 @@
 #define MEMOCLIENT_SCHEDULE_H
 
 #include <ctime>
+#include <set>
 #include <list>
 #include <string>
+
+
 class Schedule {
 public:
     time_t endTime=0;//预计的截止时间
@@ -17,7 +20,6 @@ public:
 };
 
 extern std::list<Schedule*> schedules;
-
 
 
 #endif //MEMOCLIENT_SCHEDULE_H

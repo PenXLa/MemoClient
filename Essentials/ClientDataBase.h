@@ -32,6 +32,7 @@ namespace DataBase {
     void sync_add(const Schedule &schedule);
     void sync_remove(unsigned int sid);
     void sync_edit(unsigned int sid, const Schedule &schedule);
+    void sync_clear();
 }
 
 
